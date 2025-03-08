@@ -4,6 +4,10 @@
 #define NULL 0
 #endif
 
+#include <iostream>
+ 
+using namespace std;
+
 /**
  * Node struct for both problems
  */
@@ -84,6 +88,41 @@ Node* llfilter(Node* head, Comp pred)
     // Provide your implementation below
     //*********************************************
 
+    if(head == nullptr)
+    {
+
+        // cout << "head is null ptr!" << endl;
+
+        return nullptr;
+
+    }
+
+    // cout << "Running llfilter again!" << endl;
+
+    Node* nextValid = llfilter(head->next, pred);
+
+    // cout << "Should I delete " << head->val << "?" << endl;
+
+    bool shouldDelete = pred(head->val);
+
+    if(shouldDelete)
+    {
+
+        // cout << "Yes!" << endl;
+
+        // cout << "Deleteing head!" << endl;
+
+        delete head;
+
+        return nextValid; 
+
+    }
+
+    // cout << "No!" << endl;
+
+    head->next = nextValid;
+
+    return head; 
 
 }
 

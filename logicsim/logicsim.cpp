@@ -14,6 +14,8 @@ int main(int argc, char* argv[])
   {
     if(C.parse(argv[1]))
     {
+        cout << "Cparse is true!" << endl;
+        
     	  C.startUml(ss);
         C.run(ss);
         C.endUml(ss);
